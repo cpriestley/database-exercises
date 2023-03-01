@@ -6,8 +6,13 @@ CREATE TABLE albums (
                         name          varchar(50) NOT NULL,
                         release_date  int(11) NOT NULL,
                         sales         float NOT NULL,
-                        genre         varchar(25) NOT NULL,
+                        genre         varchar(50) NOT NULL,
                         PRIMARY KEY (id)
 );
 DESCRIBE albums;
 SHOW CREATE TABLE albums;
+
+TRUNCATE TABLE albums;
+
+SELECT * FROM albums;
+
