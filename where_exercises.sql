@@ -14,8 +14,8 @@ select * from employees where first_name = 'Irena' or first_name = 'Vidya' or fi
 select * from employees where (first_name = 'Irena' or first_name = 'Vidya' or first_name = 'Maya')
 and gender = 'm';
 # Find all employees whose last name starts or ends with 'E' — 30,723 rows.
-select * from employees where last_name like 'e%' or last_name like '%e';
+select * from employees where last_name rlike '^e|e$';
 # Duplicate the previous query and update it to find all employees whose last name starts and ends with 'E' — 899 rows.
-select * from employees where last_name like 'e%';
+select * from employees where last_name like 'e%e';
 # Find all employees with a 'q' in their last name but not 'qu' — 547 rows.
-select * from employees where last_name like '%q%' and last_name not like '%qu%';
+select * from employees where last_name rlike '^.*q[^u]*$';
