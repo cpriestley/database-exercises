@@ -1,5 +1,4 @@
 use ymir_clayton;
-
 # Join Example Database
 # Create a database named join_test_db and run the SQL provided in the Join Example DB section above; to create the same setup used for this lesson.
 # Insert 4 new users into the database. One should have a NULL role. The other three should be authors.
