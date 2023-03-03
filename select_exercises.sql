@@ -20,3 +20,13 @@ SELECT * FROM albums WHERE sales < 20.0;
 SELECT 'Rock albums' as 'Caption';
 SELECT * FROM albums WHERE genre = 'Rock';
 SELECT * FROM albums WHERE genre LIKE '%rock%';
+
+alter table albums
+add unique (artist, name);
+
+create unique index artist_album_name
+on ymir_clayton.albums (artist, name);
+
+# Duplicate entry 'The Beatles-Abbey Road' for key 'artist_album_name'
+insert into albums (artist, name, release_date, sales, genre)
+values ('The Beatles', 'Abbey Road', 1969, 16.8, 'Rock');
