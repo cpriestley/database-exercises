@@ -23,7 +23,7 @@ where gender = 'F'
   and emp_no in(select emp_no
                 from titles
                 where title = 'manager'
-                  and to_date > now());
+                  and to_date = '9999-01-01');
 
 # BONUS
 # Find all the department names that currently have female managers.
@@ -32,26 +32,21 @@ from employees
 where gender = 'F'
   and emp_no in(select emp_no
                 from dept_manager
-                where to_date > now());
+                where to_date = '9999-01-01');
 
 
 # Find all the department names that currently have female managers.
-select dept_name
-from departments
-where dept_no in(select dept_no
-                 from dept_emp
-                 where emp_no in(select emp_no
-                                 from employees
-                                 where gender = 'F'
-                                   and emp_no in(select emp_no
-                                                 from dept_manager
-                                                 where to_date > now())));
+select d.dept_name
+from employees e
+join dept_manager dm on e.emp_no = dm.emp_no
+join departments d on dm.dept_no = d.dept_no
+where gender = 'F' and to_date = '9999-01-01';
 
 # Find the first and last name of the employee with the highest salary.
 select first_name, last_name
 from employees
 where emp_no = (select emp_no
                 from salaries
-                where to_date > now()
+                where to_date = '9999-01-01'
                 order by salary desc
                 limit 1);
